@@ -16,8 +16,8 @@ const item = {
 export function Hero() {
   return (
     <section id="top" className={styles.hero}>
+      <div className={styles.aurora} aria-hidden="true" />
       <div className={styles.grid} aria-hidden="true" />
-      <div className={styles.glow} aria-hidden="true" />
 
       <div className={`container ${styles.content}`}>
         <motion.div className={styles.text} initial="hidden" animate="visible" variants={container}>
