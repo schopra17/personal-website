@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Section } from '../components/ui/Section'
+import { PhotoRotator } from '../components/ui/PhotoRotator'
 import { profile } from '../content/profile'
 import styles from './About.module.css'
 
@@ -29,24 +30,31 @@ export function About() {
               {paragraph}
             </motion.p>
           ))}
+          <motion.p className={styles.targetRoles} variants={item}>
+            {profile.targetRoles}
+          </motion.p>
         </motion.div>
 
         <motion.div
-          className={styles.factsCard}
+          className={styles.side}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
         >
-          <div className={styles.factsHeading}>Quick Facts</div>
-          <ul className={styles.factsList}>
-            {profile.quickFacts.map((fact) => (
-              <li key={fact}>
-                <span className={styles.dot} />
-                <span>{fact}</span>
-              </li>
-            ))}
-          </ul>
+          <PhotoRotator />
+
+          <div className={styles.factsCard}>
+            <div className={styles.factsHeading}>Quick Facts</div>
+            <ul className={styles.factsList}>
+              {profile.quickFacts.map((fact) => (
+                <li key={fact}>
+                  <span className={styles.dot} />
+                  <span>{fact}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </motion.div>
       </div>
     </Section>

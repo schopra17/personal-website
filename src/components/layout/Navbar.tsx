@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { profile } from '../../content/profile'
+import { useScrollToSection } from '../../lib/scrollToSection'
 import styles from './Navbar.module.css'
 
 const NAV_ITEMS = [
-  { href: '#about', label: 'About' },
-  { href: '#robotics', label: 'Robotics' },
-  { href: '#hardware', label: 'Hardware' },
-  { href: '#skills', label: 'Skills' },
+  { id: 'about', label: 'About' },
+  { id: 'robotics', label: 'Robotics' },
+  { id: 'hardware', label: 'Hardware' },
+  { id: 'publications', label: 'Publications' },
+  { id: 'skills', label: 'Skills' },
 ]
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const goToSection = useScrollToSection()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -24,21 +28,17 @@ export function Navbar() {
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
-        <a className={styles.brand} href="#top">
+        <Link className={styles.brand} to="/" onClick={() => goToSection('top')}>
           Shivam Chopra
-        </a>
+        </Link>
 
         <div className={styles.links}>
           {NAV_ITEMS.map((item) => (
-            <a key={item.href} className={styles.link} href={item.href}>
+            <button key={item.id} type="button" className={styles.link} onClick={() => goToSection(item.id)}>
               {item.label}
-            </a>
+            </button>
           ))}
-          <a
-            className={styles.resumeBtn}
-            href={`${import.meta.env.BASE_URL}${profile.resumePath}`}
-            download
-          >
+          <a className={styles.resumeBtn} href={`${import.meta.env.BASE_URL}${profile.resumePath}`} download>
             Resume
           </a>
         </div>
@@ -71,9 +71,19 @@ export function Navbar() {
           >
             <div className={`container ${styles.mobileLinks}`}>
               {NAV_ITEMS.map((item) => (
-                <a key={item.href} className={styles.mobileLink} href={item.href} onClick={() => setMenuOpen(false)}>
+                <button
+                  key={item.id}
+                  type="button"
+                  className={styles.mobileLink}
+                  onClick={() => {
+                    setMenuOpen(false)
+                    // Wait for the mobile menu's collapse animation (250ms) to
+                    // finish before scrolling, or the layout shift throws off scrollIntoView.
+                    window.setTimeout(() => goToSection(item.id), 300)
+                  }}
+                >
                   {item.label}
-                </a>
+                </button>
               ))}
               <a
                 className={styles.mobileLink}

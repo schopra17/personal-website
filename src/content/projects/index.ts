@@ -1,4 +1,4 @@
-import type { Project } from './types'
+import type { Project, ProjectCategory } from './types'
 
 // Auto-collects every project file dropped into ./robotics or ./hardware —
 // add a new project by creating a new file there; no registration needed here.
@@ -12,3 +12,8 @@ const allProjects: Project[] = Object.values(modules)
 
 export const roboticsProjects: Project[] = allProjects.filter((p) => p.category === 'robotics')
 export const hardwareProjects: Project[] = allProjects.filter((p) => p.category === 'hardware')
+
+export function getProject(category: ProjectCategory, slug: string): Project | undefined {
+  const list = category === 'robotics' ? roboticsProjects : hardwareProjects
+  return list.find((p) => p.slug === slug)
+}

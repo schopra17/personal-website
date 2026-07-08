@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { AuroraBackground } from '@/components/ui/aurora-background'
 import { profile } from '../content/profile'
+import { useScrollToSection } from '../lib/scrollToSection'
 import profilePlaceholder from '../assets/profile-placeholder.svg'
 import styles from './Hero.module.css'
 
@@ -15,6 +16,8 @@ const item = {
 }
 
 export function Hero() {
+  const goToSection = useScrollToSection()
+
   return (
     <AuroraBackground id="top" className={`${styles.hero} h-auto items-stretch justify-start bg-transparent dark:bg-transparent`}>
       <div className={`container ${styles.content}`}>
@@ -35,10 +38,18 @@ export function Hero() {
             {profile.location}
           </motion.p>
 
+          <motion.div className={styles.skillStrip} variants={item}>
+            {profile.topSkills.map((skill) => (
+              <span key={skill} className={styles.skillPill}>
+                {skill}
+              </span>
+            ))}
+          </motion.div>
+
           <motion.div className={styles.ctas} variants={item}>
-            <a className={styles.ctaPrimary} href="#robotics">
+            <button type="button" className={styles.ctaPrimary} onClick={() => goToSection('robotics')}>
               View Robotics Work
-            </a>
+            </button>
             <a className={styles.ctaSecondary} href={`${import.meta.env.BASE_URL}${profile.resumePath}`} download>
               Download Resume
             </a>

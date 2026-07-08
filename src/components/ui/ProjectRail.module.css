@@ -1,0 +1,66 @@
+.wrap {
+  position: relative;
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: var(--space-3);
+}
+
+.arrowBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-elevated);
+  color: var(--fg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.arrowBtn:hover {
+  border-color: var(--fg-subtle);
+}
+
+.arrowBtn:active {
+  transform: scale(0.94);
+}
+
+.railOuter {
+  position: relative;
+}
+
+.rail {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-2);
+  scrollbar-width: thin;
+}
+
+.edge {
+  position: absolute;
+  top: 0;
+  bottom: var(--space-2);
+  width: 48px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.edgeLeft {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg), transparent);
+}
+
+.edgeRight {
+  right: 0;
+  background: linear-gradient(270deg, var(--bg), transparent);
+}

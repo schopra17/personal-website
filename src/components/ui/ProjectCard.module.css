@@ -1,11 +1,24 @@
+.cardWrap {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 640px) {
+  .cardWrap {
+    flex-basis: 330px;
+  }
+}
+
 .card {
   display: flex;
   flex-direction: column;
+  height: 100%;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   overflow: hidden;
-  height: 100%;
+  text-decoration: none;
+  color: inherit;
   transition:
     transform var(--duration-med) var(--ease-out),
     border-color var(--duration-med) var(--ease-out);
@@ -56,68 +69,52 @@
   padding: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-2);
   flex: 1;
 }
 
 .meta {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--fg-subtle);
 }
 
 .title {
-  font-size: 1.2rem;
+  font-size: 1.08rem;
+  line-height: 1.28;
 }
 
 .summary {
-  font-size: 0.95rem;
-}
-
-.bullets {
-  margin: 0;
-  padding-left: 1.1em;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
   font-size: 0.9rem;
   color: var(--fg-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.bullets li::marker {
-  color: var(--fg-subtle);
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
+.footer {
   margin-top: auto;
-  padding-top: var(--space-2);
-}
-
-.notes {
-  border-top: 1px solid var(--border);
   padding-top: var(--space-3);
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   gap: var(--space-2);
 }
 
-.notesHeading {
-  font-size: 0.75rem;
+.readMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--fg-subtle);
+  color: var(--fg);
+  white-space: nowrap;
 }
 
-.notesList {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: 0.85rem;
-  color: var(--fg-muted);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.readMore svg {
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.card:hover .readMore svg {
+  transform: translateX(3px);
 }

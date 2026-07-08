@@ -44,7 +44,11 @@
 }
 
 .link {
+  background: none;
+  border: none;
+  padding: 0;
   font-size: 0.92rem;
+  font-family: inherit;
   color: var(--fg-muted);
   text-decoration: none;
   cursor: pointer;
@@ -113,6 +117,11 @@
 }
 
 .mobileLink {
+  background: none;
+  border: none;
+  font-family: inherit;
+  width: 100%;
+  text-align: left;
   padding: 10px 4px;
   font-size: 1rem;
   color: var(--fg-muted);

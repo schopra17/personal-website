@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import type { Project } from '../../content/projects/types'
 import { Tag } from './Tag'
@@ -17,51 +18,36 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const media = project.media?.[0]
 
   return (
-    <motion.article className={styles.card} variants={cardReveal}>
-      <div className={styles.media}>
-        {media ? (
-          media.type === 'video' ? (
-            <video src={media.src} muted loop playsInline autoPlay aria-label={media.alt} />
+    <motion.div className={styles.cardWrap} variants={cardReveal}>
+      <Link to={`/${project.category}/${project.slug}`} className={styles.card}>
+        <div className={styles.media}>
+          {media ? (
+            media.type === 'video' ? (
+              <video src={media.src} muted loop playsInline autoPlay aria-label={media.alt} />
+            ) : (
+              <img src={media.src} alt={media.alt} loading="lazy" />
+            )
           ) : (
-            <img src={media.src} alt={media.alt} loading="lazy" />
-          )
-        ) : (
-          <ProjectPlaceholder category={project.category} />
-        )}
-      </div>
-      <div className={styles.body}>
-        <div className={styles.meta}>
-          {project.org} · {project.dates}
+            <ProjectPlaceholder category={project.category} />
+          )}
         </div>
-        <h3 className={styles.title}>{project.title}</h3>
-        <p className={styles.summary}>{project.summary}</p>
-        <ul className={styles.bullets}>
-          {project.bullets.map((bullet) => (
-            <li key={bullet}>{bullet}</li>
-          ))}
-        </ul>
-        {project.notes && (
-          <div className={styles.notes}>
-            {project.notes.map((note) => (
-              <div key={note.heading}>
-                <div className={styles.notesHeading}>{note.heading}</div>
-                <ul className={styles.notesList}>
-                  {note.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+        <div className={styles.body}>
+          <div className={styles.meta}>
+            {project.org} · {project.dates}
           </div>
-        )}
-        <div className={styles.tags}>
-          {project.tags.map((tag) => (
-            <Tag key={tag} variant={project.category}>
-              {tag}
-            </Tag>
-          ))}
+          <h3 className={styles.title}>{project.title}</h3>
+          <p className={styles.summary}>{project.summary}</p>
+          <div className={styles.footer}>
+            <Tag variant={project.category}>{project.tags[0]}</Tag>
+            <span className={styles.readMore}>
+              Read more
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </div>
         </div>
-      </div>
-    </motion.article>
+      </Link>
+    </motion.div>
   )
 }

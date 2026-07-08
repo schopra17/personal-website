@@ -8,12 +8,18 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/choprashivam/',
   resumePath: 'resume/Shivam-Chopra-Resume.pdf',
 
+  // Verbatim from shivamchopra.net/about — do not paraphrase.
   bio: [
-    "Shivam grew up in Shimla, a Himalayan town in northern India, where curiosity about interconnected systems took root early. He studied mechanical engineering at Punjab Engineering College — graduating as a Chancellor's Gold Medal recipient — before moving to the United States for graduate study at UC San Diego.",
-    "At UC San Diego's Gravish Lab, he worked at the intersection of robotics, biology, and mechanics — building and testing robots inspired by natural systems, from flapping-wing microrobots to underactuated robots that swim and dig through sand. His PhD centered on how passive compliance and underactuation let robots exploit deformable, granular ground rather than fight it.",
-    'That work pointed him toward engineering for social benefit rather than technology for its own sake — now channeled into medical devices at Dexcom, where he leads system-level architecture, build, and validation strategy for next-generation wearable hardware.',
-    "Outside of engineering, he's usually traveling, surfing, swimming, or sailing with the MIT Sailing Club.",
+    'I grew up in Shimla, a small mountain town in northern India at the foothills of the Himalayas. Living close to nature from an early age shaped how I see the world. I was always curious about how systems are interconnected, environments are unpredictable, and thoughtful work matters. That perspective ultimately led me to studying physics.',
+    "After completing my undergraduate studies in mechanical engineering in India, I moved to the United States to continue exploring how engineering can be used to solve the bigger problems in the world. During my master's and PhD work at UC San Diego, I joined the Gravish Lab, where I was drawn to the intersection of robotics, biology, and mechanics. My research focused on building and testing robots inspired by natural systems—from flapping‑wing microrobots to underactuated robots that move and sense in complex environments like sand and water.",
+    "What has consistently motivated me is not technology for its own sake, but engineering as a means to improve people's lives. That belief guided my transition into medical devices, where robust, well‑designed hardware can directly impact the health and independence of millions of people. In industry, I now work on complex electromechanical systems, focusing on taking ideas from early feasibility through validation and real‑world deployment.",
+    "Outside of work, I'm deeply curious about the world. I love traveling and immersing myself in different cultures, exploring national parks, and spending time outdoors. Water has always been a source of joy and balance for me. I enjoy surfing, swimming, water skiing, and I'm currently learning to sail through the MIT Sailing Club.",
   ],
+
+  targetRoles:
+    'Targeting staff and architecture roles requiring deep technical ownership and systems-level integration leadership.',
+
+  topSkills: ['Hands-on Technical Leadership', 'System Architecture', 'Root Cause Analysis', 'Robotic Mechanism Design', 'Electromechanical Integration'],
 
   quickFacts: [
     'PhD, Mechanical Engineering (Robotics) — UC San Diego',
@@ -31,5 +37,12 @@ export const profile = {
       school: 'Punjab Engineering College, India',
       date: 'Aug 2016',
     },
+  ],
+
+  impactStats: [
+    { value: '~2,000', label: 'Subsystem assemblies delivered for system validation' },
+    { value: '10 → 15', label: 'Days of wearable patch wear duration extended' },
+    { value: '1st', label: 'Fastest untethered digging & sensing robot at its beach demo' },
+    { value: '3', label: 'Peer-reviewed robotics publications' },
   ],
 }

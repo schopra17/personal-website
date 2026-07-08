@@ -1,24 +1,39 @@
+import { useEffect } from 'react'
 import { MotionConfig } from 'framer-motion'
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
-import { Hero } from './sections/Hero'
-import { About } from './sections/About'
-import { Robotics } from './sections/Robotics'
-import { Hardware } from './sections/Hardware'
-import { Skills } from './sections/Skills'
+import { HomePage } from './pages/HomePage'
+import { ProjectDetail } from './pages/ProjectDetail'
+
+function ScrollManager() {
+  const location = useLocation()
+
+  useEffect(() => {
+    const state = location.state as { scrollTo?: string } | null
+    if (!state?.scrollTo) {
+      window.scrollTo(0, 0)
+    }
+  }, [location.pathname, location.state])
+
+  return null
+}
 
 function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Robotics />
-        <Hardware />
-        <Skills />
-      </main>
-      <Footer />
+      <HashRouter>
+        <ScrollManager />
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/robotics/:slug" element={<ProjectDetail category="robotics" />} />
+            <Route path="/hardware/:slug" element={<ProjectDetail category="hardware" />} />
+          </Routes>
+        </main>
+        <Footer />
+      </HashRouter>
     </MotionConfig>
   )
 }

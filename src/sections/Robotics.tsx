@@ -1,5 +1,5 @@
 import { Section } from '../components/ui/Section'
-import { ProjectGrid } from '../components/ui/ProjectGrid'
+import { ProjectRail } from '../components/ui/ProjectRail'
 import { roboticsProjects } from '../content/projects'
 
 export function Robotics() {
@@ -10,7 +10,7 @@ export function Robotics() {
       title="Bio-inspired & underactuated robots"
       subtitle="PhD and Masters research from the Gravish Lab at UC San Diego — robots that exploit compliance and underactuation to move through sand, granular media, and constrained spaces."
     >
-      <ProjectGrid projects={roboticsProjects} />
+      <ProjectRail projects={roboticsProjects} />
     </Section>
   )
 }
