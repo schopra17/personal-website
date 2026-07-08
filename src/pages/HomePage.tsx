@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Hero } from '../sections/Hero'
-import { ImpactStrip } from '../sections/ImpactStrip'
 import { About } from '../sections/About'
 import { Robotics } from '../sections/Robotics'
 import { Hardware } from '../sections/Hardware'
@@ -23,7 +22,6 @@ export function HomePage() {
   return (
     <>
       <Hero />
-      <ImpactStrip />
       <About />
       <Robotics />
       <Hardware />
