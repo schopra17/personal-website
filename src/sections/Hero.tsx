@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { AuroraBackground } from '@/components/ui/aurora-background'
 import { profile } from '../content/profile'
 import profilePlaceholder from '../assets/profile-placeholder.svg'
 import styles from './Hero.module.css'
@@ -15,10 +16,7 @@ const item = {
 
 export function Hero() {
   return (
-    <section id="top" className={styles.hero}>
-      <div className={styles.aurora} aria-hidden="true" />
-      <div className={styles.grid} aria-hidden="true" />
-
+    <AuroraBackground id="top" className={`${styles.hero} h-auto items-stretch justify-start bg-transparent dark:bg-transparent`}>
       <div className={`container ${styles.content}`}>
         <motion.div className={styles.text} initial="hidden" animate="visible" variants={container}>
           <motion.p className="eyebrow" variants={item}>
@@ -80,6 +78,6 @@ export function Hero() {
           <p className={styles.portraitCaption}>Swap src/assets/profile-placeholder.svg for a real photo</p>
         </motion.div>
       </div>
-    </section>
+    </AuroraBackground>
   )
 }
